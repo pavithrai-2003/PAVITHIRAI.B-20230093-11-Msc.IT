@@ -1,0 +1,147 @@
+Microsoft Windows [Version 10.0.19045.4780]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MongoDB\mongosh-2.3.0-win32-x64\bin>Mongosh
+Current Mongosh Log ID: 66da86ece4bec1996d2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+mongosh 2.3.1 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-09-04T09:45:16.973+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use students
+switched to db students
+students> db.msc.insertOne({id:"100",name:"Pavi"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66da8717e4bec1996d2710bc')
+}
+students> db.msc.insertOne({id:301,name:"Raji",address:{street:"Anna Nagar",district:"Chennai"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66da89aee4bec1996d2710bd')
+}
+students> db.msc.insertMany([{id:200,name:"Kavi"},{id:201,name:"Aathi"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66da89fae4bec1996d2710be'),
+    '1': ObjectId('66da89fae4bec1996d2710bf')
+  }
+}
+students> db.msc.find()
+[
+  { _id: ObjectId('66da7f71c0865106d02710bc'), id: 100, name: 'Pavi' },
+  {
+    _id: ObjectId('66da8098c0865106d02710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  { _id: ObjectId('66da832ec0865106d02710be'), id: 200, name: 'Kavi' },
+  { _id: ObjectId('66da832ec0865106d02710bf'), id: 201, name: 'Aathi' },
+  { _id: ObjectId('66da83f82ccc8fdacf2710bc'), id: 100, name: 'Pavi' },
+  {
+    _id: ObjectId('66da864a2ccc8fdacf2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  {
+    _id: ObjectId('66da8717e4bec1996d2710bc'),
+    id: '100',
+    name: 'Pavi'
+  },
+  {
+    _id: ObjectId('66da89aee4bec1996d2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  { _id: ObjectId('66da89fae4bec1996d2710be'), id: 200, name: 'Kavi' },
+  { _id: ObjectId('66da89fae4bec1996d2710bf'), id: 201, name: 'Aathi' }
+]
+students> db.msc.updateOne({name:"Sathya"},{$set:{name:"Sakthi"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+students> db.msc.updateMany({name:"Sathya"},{$set:{name:"Devi",id:123}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+students> db.msc.find()
+[
+  { _id: ObjectId('66da7f71c0865106d02710bc'), id: 100, name: 'Pavi' },
+  {
+    _id: ObjectId('66da8098c0865106d02710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  { _id: ObjectId('66da832ec0865106d02710be'), id: 200, name: 'Kavi' },
+  { _id: ObjectId('66da832ec0865106d02710bf'), id: 201, name: 'Aathi' },
+  { _id: ObjectId('66da83f82ccc8fdacf2710bc'), id: 100, name: 'Pavi' },
+  {
+    _id: ObjectId('66da864a2ccc8fdacf2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  {
+    _id: ObjectId('66da8717e4bec1996d2710bc'),
+    id: '100',
+    name: 'Pavi'
+  },
+  {
+    _id: ObjectId('66da89aee4bec1996d2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  { _id: ObjectId('66da89fae4bec1996d2710be'), id: 200, name: 'Kavi' },
+  { _id: ObjectId('66da89fae4bec1996d2710bf'), id: 201, name: 'Aathi' }
+]
+students> db.msc.deleteOne({name:"Raji"})
+{ acknowledged: true, deletedCount: 1 }
+students> db.msc.deleteOne({name:"Kavi"})
+{ acknowledged: true, deletedCount: 1 }
+students> db.msc.find()
+[
+  { _id: ObjectId('66da7f71c0865106d02710bc'), id: 100, name: 'Pavi' },
+  { _id: ObjectId('66da832ec0865106d02710bf'), id: 201, name: 'Aathi' },
+  { _id: ObjectId('66da83f82ccc8fdacf2710bc'), id: 100, name: 'Pavi' },
+  {
+    _id: ObjectId('66da864a2ccc8fdacf2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  {
+    _id: ObjectId('66da8717e4bec1996d2710bc'),
+    id: '100',
+    name: 'Pavi'
+  },
+  {
+    _id: ObjectId('66da89aee4bec1996d2710bd'),
+    id: 301,
+    name: 'Raji',
+    address: { street: 'Anna Nagar', district: 'Chennai' }
+  },
+  { _id: ObjectId('66da89fae4bec1996d2710be'), id: 200, name: 'Kavi' },
+  { _id: ObjectId('66da89fae4bec1996d2710bf'), id: 201, name: 'Aathi' }
+]
+students>
